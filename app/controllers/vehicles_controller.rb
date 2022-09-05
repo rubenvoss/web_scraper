@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: %i[ show edit update destroy ]
+  before_action :set_vehicle, only: %i[show edit update destroy]
 
   # GET /vehicles or /vehicles.json
   def index
@@ -7,8 +9,7 @@ class VehiclesController < ApplicationController
   end
 
   # GET /vehicles/1 or /vehicles/1.json
-  def show
-  end
+  def show; end
 
   # GET /vehicles/new
   def new
@@ -16,8 +17,7 @@ class VehiclesController < ApplicationController
   end
 
   # GET /vehicles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /vehicles or /vehicles.json
   def create
@@ -58,13 +58,15 @@ class VehiclesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vehicle
-      @vehicle = Vehicle.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def vehicle_params
-      params.require(:vehicle).permit(:title, :stock_type, :exterior_color, :interior_color, :transmission, :drivetrain, :price, :miles)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def vehicle_params
+    params.require(:vehicle).permit(:title, :stock_type, :exterior_color, :interior_color, :transmission,
+                                    :drivetrain, :price, :miles)
+  end
 end
