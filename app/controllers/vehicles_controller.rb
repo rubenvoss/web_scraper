@@ -3,14 +3,13 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: %i[show edit update destroy]
 
-
   # GET /vehicles or /vehicles.json
   def index
     @vehicles = Vehicle.all
   end
 
   def scrape
-    url = 'https://www.cars.com/shopping/sedan/'
+    url = "https://www.cars.com/shopping/sedan/"
     response = VehiclesSpider.process(url)
     if response[:status] == :completed && response[:error].nil?
       flash.now[:notice] = "Successfully scraped url"
